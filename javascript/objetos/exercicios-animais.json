@@ -1,0 +1,22 @@
+{
+    "animais": [
+        {
+            "id": 1,
+            "nome": "Leão",
+            "tipo": "Mamífero",
+            "habitat": "Savana"
+        },
+        {
+            "id": 2,
+            "nome": "Coruja",
+            "tipo": "Ave",
+            "habitat": "Floresta"
+        },
+        {
+            "id": 3,
+            "nome": "Gato",
+            "tipo": "Mamífero",
+            "habitat": "Doméstico"
+        }
+    ]
+}
