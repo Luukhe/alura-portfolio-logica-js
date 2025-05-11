@@ -4,6 +4,8 @@
 
 #### Lógica com Javascript ####
 
+* <a href="https://logica-projeto-inicial-three.vercel.app/">Primeiro projeto (número secreto)</a>
+
 * <a href="https://alugames-orcin.vercel.app/">AluGames</a>
 
 * <a href="https://amigo-secreto-rosy-sigma.vercel.app/">Amigo secreto</a>
