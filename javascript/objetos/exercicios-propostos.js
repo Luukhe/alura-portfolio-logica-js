@@ -1082,9 +1082,9 @@
 //         id: 2,
 //         nome: 'Finanças',
 //         funcionarios: [
-//             {id: 209,nome: 'Clara',cargo: 'Gerente de finanças'},
-//             {id: 199,nome: 'Ana',cargo: 'Analista de finanças'},
-//             {id: 302,nome: 'Camila',cargo: 'Sub-gerente de finanças'}
+//             {id: 209, nome: 'Clara', cargo: 'Gerente de finanças'},
+//             {id: 199, nome: 'Ana', cargo: 'Analista de finanças'},
+//             {id: 302, nome: 'Camila', cargo: 'Sub-gerente de finanças'}
 //         ]
 //     },
 //     {
