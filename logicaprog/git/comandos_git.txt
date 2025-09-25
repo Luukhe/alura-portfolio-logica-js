@@ -1,0 +1,196 @@
+arquivo teste com intenção de ser ignorado pelo gitignore
+(NOTA: ESTE ARQUIVO A PRINCÍPIO ERA APENAS UM ARQUIVO DE TESTE A SER IGNORADO PELO GITIGNORE, PORÉM DEPOIS PASSOU A SER MATERIAL PARA COMANDOS GIT)
+
+
+
+Gitignore é um arquivo que irá IGNORAR (NÃO SERÁ MOSTRADO), no repositório remoto (GitHub), qualquer arquivo/pasta que seja LISTADO dentro do arquivo do gitignore, SENDO CADA ARQUIVO SEPARADO POR LINHAS.
+
+******* NOTA IMPORTANTE: Cada linguagem de programação e/ou tecnologia, terá arquivos já específicos para serem ignorados pelo gitignore. Logo, há um site que *GERA AUTOMATICAMENTE* os arquivos para cada necessidade, que é: https://www.toptal.com/developers/gitignore
+
+
+**** DEFINIÇÃO DE GITIGNORE DA PRÓPRIA DOCUMENTAÇÃO DO GIT:
+Um arquivo gitignore define quais são os arquivos são intencionalmente deixados de fora e não são rastreados. Os arquivos já monitorados pelo Git não são afetados; consulte as NOTAS abaixo para obter detalhes.
+
+Cada linha num arquivo gitignore especifica um padrão. Ao decidir se deve ignorar um caminho, o Git normalmente verifica os padrões de várias fontes no gitignore, com a seguinte ordem de precedência, da mais alta para a mais baixa (dentro de um nível de precedência, o último padrão correspondente decide o resultado):
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+************ SOBRE PARÂMETROS DO GIT LOG:
+
+*NOTA: Se o git log não estiver mostrando todos os commits, é só ir apertando **ESPAÇO** que ele vai mostrando mais dos commits logo após a execução do log 
+
+
+** git log --oneline: Como o nome sugere, mostra os logs em **UMA LINHA**, ou seja, mostra os logs de forma bem mais RESUMIDA e SIMPLIFICADA, mostrando APENAS as MENSAGENS DOS COMITS além de um ID DO HASH SIMPLIFICADO.
+
+** git log -p: De forma ****INVERSA**** ao oneline, esse parâmetro mostrará os logs de forma mais DETALHADA, mostrando além das informações padrões (autor, data, msg, hash), mostrará um LOG MAIS COMPLETO contendo as **MUDANÇAS FEITAS** e outras informações, que são o formato **DIFF** (indica que as linhas que começarem com o sinal de - (menos), foram conteúdos removidos e, as que começam com +, adicionadas. Também mostra em qual arquivo a alteração foi feita).
+
+**git log --format: O parâmetro format do git log permite-nos mostrar um log mais "personalizado" (exibirmos O QUE QUISERMOS do commit), sendo as informações que queremos mostrar passadas como ***VALORES*** para o parâmetro do format.
+*EXEMPLO USADO NA AULA: git log --format="%H %an", os valores passados ao format correspondem à HASH DO COMMIT (%H) e PROPRIETÁRIO DO COMMIT (%an).
+*Existem VÁRIOS OUTROS VALORES possíveis para ser passados ao format!
+
+
+************* SOBRE GIT SHOW (MOSTRA ESPECIFICAMENTE UM COMMIT SELECIONADO POR SUA HASH):
+
+O git show basicamente irá buscar e exibirá as informações da mesma forma que o *git log -p* mostra, porém ESPECIFICAMENTE DE **UM** COMMIT. O git show é o comando que mostrará detalhadamente ***UM COMMIT ESPECÍFICO*** (após ser capturado através de sua hash).
+Exemplo: git show {hash}
+**NOTA: No git show, é OPCIONAL passar um valor e, usando-se o git show SOZINHO, ele irá detalhar o **COMMIT HEAD**, ou seja, o último commit feito
+
+
+
+************* SOBRE O COMANDO "GIT DIFF":
+
+Existem alguns pontos sobre:
+
+O git diff é um comando que irá MOSTRAR TUDO QUE FOI ALTERADO, ***ANTES COMMITAR E ANTES DE SER ADICIONADO PARA COMMIT*** (pré git add). O git diff irá mostrar a DIFERENÇA ENTRE DOIS ESTADOS, e por padrão, os dois estados mostrados serão **A ÚLTIMA MODIFICAÇÃO FEITA E O ÚLTIMO COMMIT** (irá comparar o estado atual do projeto, após modificações, com o último commit). Sendo assim, alterações que JÁ FORAM ADICIONADAS (à STAGING AREA, que é um estado onde as alterações estão prontas para ser commitadas, ou seja, logo após o git add e antes do commit) NÃO SERÃO MOSTRADAS NO GIT DIFF, pois o comando mostrará apenas alterações que NÃO FORAM ADICIONADAS AINDA!!
+
+***** O git diff também nos permite visualizar as mudanças entre ***DOIS PONTOS*** de commits, usando a seguinte sintaxe:
+git diff {hash do commit}..{hash do commit} *********NOTA IMPORTANTE: Não pode haver nenhum ESPAÇO entre os pontos e os hashs, senão, não funciona!!!
+
+***** Se apenas um HASH for passado para o git diff, o git diff irá comparar ENTRE O PONTO DO COMMIT DO HASH PASSADO, ATÉ O HEAD COMMIT!
+
+
+
+************* SOBRE COMANDOS GIT PARA ****BRANCHES**** :
+
+*** GIT BRANCH: O comando GIT BRANCH, estando SOZINHO literalmente mostra em que branch estamos trabalhando.
+
+*** CRIANDO UMA NOVA BRANCH: Para se criar uma branch, a sintaxe é: git branch {NOME DA BRANCH}. ** NOTA: Quando uma nova branch é criada, permanece-se ainda na mesma branch, logo, é preciso MOVER-SE para a nova branch.
+
+*** MOVENDO-SE PARA OUTRAS BRANCHES: O comando *GIT SWITCH* nos permite movermos entre as branches.
+*** CRIANDO UMA NOVA BRANCH E MOVENDO-SE PARA A NOVA BRANCH DE UMA VEZ SÓ: Para criar uma nova branch e automaticamente mudar para a mesma, a sintaxe é: git switch -c ("C" de CREATE) {NOME DA BRANCH}
+
+*** DELETANDO UMA BRANCH: Para deletar uma branch, usa-se: git branch -d {NOME DA BRANCH}.
+*** DELETANDO A BRANCH TAMBÉM DO REPOSITÓRIO REMOTO (GITHUB): Usa-se git push origin :{NOME DA BRANCH}
+
+*************** NOTA MUITO IMPORTANTE SOBRE BRANCHES E COMMITS: Diferentes *commits* em diferentes branches só terão alguma alteração em suas respectivas branches.
+Exemplo: foi criada uma nova branch teste e, nela, feito um commit alterando uma parte do código. Usando o comando git switch para mudar para a branch MAIN, nessa branch a alteração ainda NÃO EXISTE, pois o commit foi feito em uma OUTRA BRANCH e ainda não existe na branch principal ou em qualquer outra.
+
+
+
+
+
+******************************* SOBRE O GIR MERGE (MUITISSIMO IMPORTANTE) **********************************
+
+*** GIT MERGE: É o comando que irá MESCLAR (FAZER UM MERGE) AS ATUALIZAÇÕES das branches. 
+Exemplo: para, em uma BRANCH MAIN, dar um merge vindo de uma BRANCH TESTE, usa-se: git merge {NOME DA BRANCH TESTE}
+
+*** "MÉTODO (OU ESTRATÉGIA)" FAST FORWARD: O fast forward acontece quando uma NOVA BRANCH é criada A PARTIR DE UM PONTO DA MAIN E, conforme sejam feitos NOVOS COMMITS nessa nova branch MAS a BRANCH MAIN não recebeu **NENHUM COMMIT NOVO** (OU SEJA, quando a nova branch EVOLUI NA MESMA LINHA, sem que a main tenha novos commits), quando houver um MERGE feito da branch main para puxar as atualizações/commits da nova branch, o que na verdade acontecerá é que a BRANCH MAIN FARÁ UM FAST FORWARD ("será transferida") PARA O PONTO EM QUE A NOVA BRANCH ESTÁ!!
+
+*** ANTIGO "MÉTODO (OU ESTRATÉGIA)" MERGE COMMIT, E ATUAL "ORT STRATEGY": Resume-se em um caso mais comum, onde se por acaso estivermos trabalhando e evoluindo em uma branch e ao mesmo tempo a BRANCH MAIN já está recebendo atualizações e commits, OU SEJA, se ambas as branches estão EVOLUINDO PARALELAMENTE/INDEPENDENTE, quando for feito um MERGE entre elas, anteriormente com a existência do MERGE COMMIT, surgia um novo commit a ser feito a partir do merge. Agora, aparece só uma mensagem dizendo que o merge foi feito com "ort strategy".
+
+
+********************************** SOBRE O GIT REBASE (MUITÍSSIMO IMPORTANTE) **********************************
+
+*** GIT REBASE: O git rebase servirá como uma "forma" de "SINCRONIZAR DUAS BRANCHES" COLOCANDO-AS NA MESMA LINHA. Ele basicamente irá pegar TODOS OS COMMITS feitos em uma branch e os colocará ***À FRENTE DE TODOS OS COMMITS FEITOS DA BRANCH SELECIONADA NO COMANDO***!!
+EXEMPLO: Se caso uma BRANCH NOVA FUNCIONALIDADE for criada a partir de um certo ponto de uma BRANCH MAIN e, ambas as branches estão sendo evoluídas e recebendo commits, e chega em um determinado período onde queremos unir a branch de nova funcionalidade à branch main sem usar merge, usa-se o rebase, que irá pegar TODO O TRABALHO FEITO (COMMITS) E LITERALMENTE COLOCAR À FRENTE, AO TOPO DE TODOS OS COMMITS JÁ FEITOS NA MAIN (fazendo assim uma reescrição da história, pois a branch nova funcionalidade foi originalmente criada a partir de um ponto mais atrás na branch main, e agora está inteiramente à frente do último commit da main), fazendo assim com que a nova funcionalidade seja testada juntamente com todas as novas atualizações que foram colocadas à branch main.
+
+NOTA: A branch main ainda continuará em seu devido commit, possibilitando assim então um possível branch merge com a nova funcionalidade, o que irá gerar um FAST FORWARD, já que a branch de nova funcionalidade foi colocada à MESMA LINHA da branch main.
+
+
+********************************** SOBRE GIT STASH *****************************************
+
+*** GIT STASH: Irá guardar uma alteração para que ela seja retomada depois. O git stash basicamente irá DESFAZER TODAS AS ALTERAÇÕES FEITAS QUE NÃO FORAM COMMITADAS (acredito que o ponto até onde ele desfaz alterações, seja o último commit), e **SALVÁ-LAS** em seu próprio STASH. É útil para quando estamos trabalhando em uma funcionalidade e, repentinamente, precisamos mudar para algum outro tipo de trabalho (resolver um bug inesperado e urgente, talvez), porém o código encontra-se num estado onde não há a possibilidade de se fazer um commit, então usando o git stash, as alterações feitas serão descartadas e GUARDADAS.
+Outra hipótese interessante em se usar o GIT STASH, é quando estamos trabalhando em determinada branch/aplicação e, repentinamente algo dá errado na branch main ou em qualquer outro lugar. Logo, fica a dúvida de se o que fizemos pode ter de alguma forma AFETADO algo em algum outro lugar. Então, uma boa opção seria usar o GIT STASH para que as alterações feitas sejam REMOVIDAS para que então os testes sejam realizados e haja a confirmação se o erro vem da aplicação trabalhada ou não. Dadas as confirmações de que o erro não vem da aplicação trabalhada, recupera-se então o trabalho feito que estará armazenado no GIT STASH.
+
+*** GIT STASH POP: O git stash pop **RETOMARÁ TODO O TRABALHO FEITO** que anteriormente havia sido guardado. Após o seu uso, o POP irá **REMOVER O ITEM DA STASH LIST**.
+* NOTA: O git stash pop, por padrão sempre buscará O ÚLTIMO STASH (índice 0) ADICIONADO À LISTA DE STASHES.
+** NOTA2 - GIT STASH POP {INDICE}: Assim como o APPLY, também é possível utilizar o pop passando um ÍNDICE, para que seja buscado um item específico dentro da stash list (RELEMBRANDO QUE, UTILIZAR O POP FARÁ COM QUE O ITEM SELECIONADO SEJA REMOVIDO DA STASH LIST, DIFERENTE DO APPLY, QUE CONTIUNARÁ).
+
+*** GIT STASH PUSH -m "{MENSAGEM}": Fará um stash (guardará as alterações feitas) porém com uma MENSAGEM DESCRITIVA SOBRE O DETERMINADO STASH, que é mostrada na LISTA DE STASH (git stash list).
+
+*** ENGAVETAMENTO DO GIT STASH: Cada vez que um git stash é performado, as mudanças são guardadas e **EMPILHADAS** na LISTA DO STASH.
+*** GIT STASH LIST: Mostra uma LISTA de TODOS os git stashes performados (todas as alterações feitas e guardadas).
+* NOTA: Cada STASH feito e EMPILHADO, terá um **ÍNDICE**
+
+*** GIT STASH APPLY {INDICE}: Irá buscar UM **DETERMINADO STASH** A PARTIR DE SEU *ÍNDICE* na lista de stashes.
+*NOTA: Ao aplicar o APPLY, o item referente ao índice determinado CONTINUARÁ NA STASH LIST (diferente do POP usado com ÍNDICE, que removerá da stash list).
+
+*** GIT STASH CLEAR: Literalmente como o nome já diz, limpa a lista de stash
+
+*** GIT STASH DROP: O git stash drop funciona exatamente como o pop, mas com uma simples diferença: ele apenas remove o item da stash, sem aplicá-lo em nosso repositório. Dessa forma, git stash drop remove o último item adicionado à stash, enquanto o git stash drop 1 remove da stash o item com índice 1.
+
+
+
+
+******************************** SOBRE O GIT RESTORE *******************************
+
+*** GIT RESTORE: Irá, se não passada nenhuma informação, RESTAURAR arquivos modificados que AINDA NÃO FORAM ADICIONADOS OU COMMITADOS para o ponto do ÚLTIMO COMMIT (HEAD).
+
+****** GIT RESTORE --STAGED: Com o staged, o git restore irá restaurar arquivos que estão em STAGING AREA (quando estão adicionados, prontos para serem commitados) para o momento de ANTES DE SEREM ADICIONADOS À MESMA.
+
+***** NOTA: Se houver um arquivo que JÁ ESTEJA STAGED (ADICIONADO) E, logo em seguida houver a necessidade de mexer no arquivo novamente, ele sairá do modo STAGED e irá para o modo modificado (pré stage). Porém, isso não quer dizer que, nesse ponto, se for aplicado um GIT RESTORE (que restaura apenas as modificações de arquivos pré stage) que ele irá reverter TUDO feito (incluindo a parte do arquivo que era staged), ele apenas irá reverter as coisas adicionadas que fizeram o arquivo entrar em PRÉ STAGE NOVAMENTE, ou seja, VOLTARÁ AO PONTO ONDE O ARQUIVO ERA STAGED.
+
+Resumindo: uma vez que um arquivo entra em staged e volta à pré staged devido a necessidade de mais alterações, se aplicado um git restore mesmo estando em pré stage de novo, não voltará TUDO do início, mas sim ao ponto onde era staged.
+
+
+******* GIT RESTORE --SOURCE={HASH}: É possível "voltar no tempo" com o restore para algum commit usando seu respectivo HASH. Assim, mostrando exatamente como era o projeto em determinado tempo/commit.
+
+
+
+
+
+***************************************** SOBRE O GIT TAG (IMPORTANTE) **************************************
+
+*** GIT TAG {NOME DA TAG}: As tags, como o nome já diz, são MARCADORES que podemos colocar para ser REFERENCIADO em ALGUMA PARTE DO CÓDIGO (NOS COMMITS, NO CASO), ou também para criar um CHECKPOINT no código (salvar o estado da aplicação naquele momento). É também usado para *****NOMEAR VERSÕES***** de RELEASES!!!
+
+** SOZINHO: Se usada sozinho, sem nada passado, o git tag criará uma tag PARA O HEAD COMMIT (o último commit feito)!
+
+*** CRIANDO TAG PARA UM COMMIT ESPECÍFICO: Pode-se também criar uma tag para QUALQUER COMMIT que quisermos, QUALQUER COMMIT NO HISTÓRICO
+SINTAXE: GIT TAG {NOME DA TAG} {HASH DO COMMIT}
+
+*** LISTA DE TAGS: Para ver uma lista de todas as tags criadas, usa-se simplesmente **GIT TAG**, e então serão mostradas todas as tags criadas
+
+*************** NOTA IMPORTANTE: Quando colocamos uma TAG em um ponto específico do código (um COMMIT), e enviamos a alteração QUE POSSUI A TAG para o repositório remoto, a TAG NÃO É INCLUÍDA AO PUSH PARA O REPOSITÓRIO REMOTO, necessitando então de que HAJA UM PUSH PRÓPRIO PARA AS TAGS!!!!
+
+** PARA ENVIAR UMA TAG ESPECÍFICA AO REPOSITÓRIO REMOTO: Usa-se ****GIT PUSH ORIGIN {NOME DA TAG}****
+
+*** PARA ENVIAR TOOOOODAS AS TAGS EXISTENTES/LISTADAS: Usa-se ****GIT PUSH ORIGIN --TAGS***
+
+*** PARA DELETAR UMA TAG: Para deletar uma tag, usa-se GIT TAG --DELETE(ou apenas -d) {NOME DA TAG}
+
+*** ANNOTATED TAGS: Como o nome sugere, são tags que possuem alguma ANOTAÇÃO, ou seja, alguma DESCRIÇÃO sobre a tag. Essa tag por baixo dos panos também poderá mostrar informações além da mensagem como o autor e a data.
+* PARA MOSTRAR TAIS INFORMAÇÕES, USA-SE: git tag -v {NOME DA TAG} *******(FUNCIONARÁ APENAS PARA ANOTATED TAGS)************
+Para realizar uma TAG ANOTADA, faz-se: GIT TAG -A {NOME DA TAG} -M "TEXTO SOBRE A ANOTAÇÃO DESCRIÇÃO".
+* NOTA: O parâmetro -A é **OPCIONAL**, pois passando uma informação como por exemplo o "-m", que irá passar a MENSAGEM, o git já entenderá que essa é uma tag ANOTATED.
+NOTA: Caso uma anotação não seja passada, a mensagem mostrada no github será o COMMIT.
+
+*** ADICIONANDO TAG ANOTATED EM UM COMMIT ESPECÍFICO: Para fazê-lo, usa-se: GIT TAG -A {NOME DA TAG} {HASH DA TAG} -M "TEXTO DESCRITIVO".
+
+
+
+***************************** SOBRE RELEASES (GITHUB) *************************
+
+NO GITHUB: Releases são criadas a partir de TAGS, ONDE QUEREMOS DISPONIBILIZAR UMA NOVA VERSÃO e são disponibilizados ARQUIVOS SOBRE O PROJETO, como um arquivo binário, um documento a mais, uma descrição diferente além da tag, um **RELEASE NOTES**.
+
+**** RELEASE NOTES: Na aba de lançamento da release, existe um BOTÃO NO GITHUB que irá GERAR AUTOMATICAMENTE um release notes, trazendo detalhes de pull requests e um CHANGE LOG.
+
+* CHANGE LOG: Mostra um DIFF entre a tag anterior e a tag sendo lançada no momento.
+
+
+
+
+
+
+****************************************************** SOBRE CHERRY-PICK (MUITÍSSIMO IMPORTANTE) **************************************************
+
+
+
+******* GIT CHERRY-PICK {HASH DO COMMIT}: O cherry pick literalmente irá PEGAR um COMMIT DE UMA ***OUTRA BRANCH*** e APLICAR NA BRANCH ATUAL.
+
+* É muito útil quando na funcionalidade em que estivermos trabalhando, precise de alguma outra funcionalidade, algum outro commit de uma OUTRA branch, evitando assim que precisemos fazer manualmente um trabalho separado e REAPROVEITANDO um commit JÁ EXISTENTE EM OUTRA BRANCH!!
+
+
+
+
+************************************************* SOBRE O GIT BLAME *********************************************
+
+*** GIT BLAME {NOME DO ARQUIVO}: O git blame mostrará, em CADA LINHA, qual foi o ÚLTIMO COMMIT RESPONSÁVEL POR AQUELA LINHA (seja da criação ou alteração), mostrando TAMBÉM o AUTOR e a DATA, ou seja, pode mostrar tanto quem CRIOU aquela inha, quanto quem futuramente ALTEROU a linha.
+O git blame oferece a possibilidade de perguntar ao criador ou à úlltima pessoa que editou tal linha, qual raciocínio foi usado para tal.
+
+*** NOTA IMPORTANTE: Os commits que começarem com um ACENTO CIRCUNFLEXO (^) indicam que aquele commit, foi o commit **ORIGINAL, DE CRIAÇÃO** das linhas do projeto.
+
+* E para maiores detalhes sobre, basta resgatar a hash do commit e mostra-lo com git show.
+
+NOTA: pode-se também usar EXTENSÕES que usam BLAME para uma maior FACILIDADE na visualização do mesmo.
