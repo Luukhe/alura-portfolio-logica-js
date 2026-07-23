@@ -1,8 +1,8 @@
-const fs = require('fs');
+// const fs = require('fs');
 
-const pastaDir = 'C:/Users/luuka/Desktop/pasta-js-teste';
-const caminho = 'C:/Users/luuka/Desktop/textoteste.txt';
-const conteudoTxt = 'salve';
+// const pastaDir = 'C:/Users/luuka/Desktop/pasta-js-teste';
+// const caminho = 'C:/Users/luuka/Desktop/textoteste.txt';
+// const conteudoTxt = 'salve';
 
 // fs.writeFile(caminho, conteudoTxt, 'utf-8', () => {});
 
@@ -94,27 +94,27 @@ const conteudoTxt = 'salve';
 
 
 
-function teste () {
-  const verif = true;
+// function teste () {
+//   const verif = true;
 
-  try {
+//   try {
     
-    console.log('Início');
+//     console.log('Início');
 
-    // O objeto de erro em si não é impresso automaticamente a menos que você o faça explicitamente dentro do catch.
-    // Qualquer código *APÓS O THROW* não funciona (da mesma forma que códigos após um return, por exemplo)
-    // E, o throw também encerra o fluxo quando é acionado
-    if (!verif) {
-      throw new Error('Erro detectado');
-    }
+//     // O objeto de erro em si não é impresso automaticamente a menos que você o faça explicitamente dentro do catch.
+//     // Qualquer código *APÓS O THROW* não funciona (da mesma forma que códigos após um return, por exemplo)
+//     // E, o throw também encerra o fluxo quando é acionado
+//     if (!verif) {
+//       throw new Error('Erro detectado');
+//     }
     
-  } catch (e) {
-    //console.log(`Capturado.\nMensagem: ${e.message}\nError name: ${e.name}\nError: ${e}`);
-  };
-};
+//   } catch (e) {
+//     //console.log(`Capturado.\nMensagem: ${e.message}\nError name: ${e.name}\nError: ${e}`);
+//   };
+// };
 
 
-teste();
+// teste();
 
 
 
@@ -461,59 +461,59 @@ teste();
 
 
 
-function bmwRemover (str) {
+// function bmwRemover (str) {
 
-  try {
-    if (typeof str !== 'string') {
-      throw new Error('This program only works for text.')
-    };
+//   try {
+//     if (typeof str !== 'string') {
+//       throw new Error('This program only works for text.')
+//     };
 
-    return remover(str)
+//     return remover(str)
 
-    // Jeito mais prático e rápido:
-    //return str.replace(/[bmw]/i, '');
-  } catch(e) {
-    return e.message;
-  };
+//     // Jeito mais prático e rápido:
+//     //return str.replace(/[bmw]/i, '');
+//   } catch(e) {
+//     return e.message;
+//   };
 
-};
+// };
 
 
-function remover(str) {
+// function remover(str) {
 
-  // IMPORTANTE: Transformar a string inteira em minúsculas foi substituído pela **Flag global "i" no REGEX**
-  // str = str.toLowerCase();
+//   // IMPORTANTE: Transformar a string inteira em minúsculas foi substituído pela **Flag global "i" no REGEX**
+//   // str = str.toLowerCase();
 
-  const arrayOfString = str.split('');
-  const regex = /[bmw]/i;
+//   const arrayOfString = str.split('');
+//   const regex = /[bmw]/i;
 
-  const newArr = arrayOfString.filter(n => !regex.test(n))
+//   const newArr = arrayOfString.filter(n => !regex.test(n))
 
-  return newArr.join('');
+//   return newArr.join('');
 
-  // const regex = /[bmw]/;
+//   // const regex = /[bmw]/;
 
-  // arrayOfString.forEach((n, index) => {
-  //   if (regex.test(n)) {
-  //     arrayOfString.splice(index, 1);
-  //   }
-  // });
+//   // arrayOfString.forEach((n, index) => {
+//   //   if (regex.test(n)) {
+//   //     arrayOfString.splice(index, 1);
+//   //   }
+//   // });
 
-  // return arrayOfString.join('');
+//   // return arrayOfString.join('');
 
-  // NOTA IMPORTANTE: Em casos como esse (e, talvez, outros futuramente) é bom considerar criar um array novo ao invés de iterar o original, pois pode minimizar erros
+//   // NOTA IMPORTANTE: Em casos como esse (e, talvez, outros futuramente) é bom considerar criar um array novo ao invés de iterar o original, pois pode minimizar erros
 
-  // const newArr = [];
-  // const regex = /[bmw]/
+//   // const newArr = [];
+//   // const regex = /[bmw]/
 
-  // arrayOfString.forEach(n => {
-  //   if (!regex.test(n)) {
-  //     newArr.push(n)
-  //   };
-  // })
+//   // arrayOfString.forEach(n => {
+//   //   if (!regex.test(n)) {
+//   //     newArr.push(n)
+//   //   };
+//   // })
 
-  // return newArr.join('');
-};
+//   // return newArr.join('');
+// };
 
 
 // console.log(bmwRemover('mvolvom'));
@@ -526,3 +526,222 @@ function remover(str) {
 // abc.splice(0, 1, 3);
 
 // console.log(abc);
+
+
+
+
+// function carregarPagina(callback) {
+//   console.log('Carregando a página...');
+
+//   setTimeout(() => {
+//     callback('teste parametro');
+//   }, 1500);
+// };
+
+// function carregada(msg) {
+//   console.log('Carregada.' + msg);
+// };
+
+// carregarPagina(carregada)
+
+// carregarPagina(() => console.log('Carregada. (sem parâmetro)'))
+
+// carregarPagina(a => console.log('Carregada.' + a))
+
+// carregarPagina(function (msg) {
+//   console.log('Carregada.' + msg)
+// });
+
+// Se colocasse os parênteses, o JavaScript executaria a função "carregada" imediatamente, antes mesmo de a função carregarPagina começar a rodar.
+// Ex: carregarPagina(carregada);
+
+// Essencialmente, funções CALLBACK são funções que são um passo a se fazer QUANDO A FUNÇÃO PRINCIPAL TERMINAR DE EXECUTAR A TAREFA PRINCIPAL.
+// Uma função callback é uma função que você passa como argumento para outra função, para que ela seja chamada quando uma tarefa for concluída. É muito útil para fazer operações ASSÍNCRONAS, como fazer requisições de rede, ler arquivos, ou qualquer coisa que leve tempo para ser concluída.
+
+
+
+// async function funcaoAssincrona() {
+//   // Síncrono
+//   console.log('2');
+
+//   // Apenas o retorno é assíncrono
+//   return '4';
+// };
+
+// console.log('1');
+
+// // O retorno é tratado como uma PROMISE. Logo, usa-se .then para lidar
+// funcaoAssincrona().then(a => console.log(a));
+
+// console.log('3');
+
+
+
+
+
+
+
+
+// async function pegarNome() {
+//   return 'carlos';
+// };
+
+// console.log(pegarNome());
+
+// pegarNome().then(a => console.log(a));
+
+// console.log(await pegarNome());
+
+
+// const resultado = pegarNome();
+// resultado.then(a => console.log(a));
+
+// const resultado2 = await pegarNome();
+// console.log(resultado2);
+
+
+
+// async function teste() {
+//   console.log('B');
+//   return 'D';
+// };
+
+// console.log('A');
+
+// teste().then(a => console.log(a));
+
+// console.log('C');
+
+
+
+// function teste() {
+
+//   const p = new Promise((resolve, reject) => {
+//     let a = 1 + 1;
+  
+//     if (a === 2) {
+//       resolve({
+//         sucesso: 'sucesso'
+//       })
+//     } else {
+//       reject('Não')
+//     }
+//   });
+  
+  
+//   return p
+
+// }
+// teste().then(a => console.log(a.sucesso))
+
+
+// const p = new Promise((resolve, reject) => {
+//   const a = 1 + 1;
+
+//   if (a === 2) {
+//     resolve('Sucess')
+//   } else {
+//     reject('Falhou')
+//   }
+// })
+
+
+// p.then(a => console.log(a))
+
+
+
+// function teste(avaliacao, nome) {
+
+//   const promise = new Promise((resolve, reject) => {
+
+//     if (avaliacao) {
+//       resolve({
+//         name: nome
+//       })
+//     } else {
+//       reject({
+//         name: nome
+//       })
+//     }
+//   });
+
+//   return promise;
+// };
+
+// teste(true, 'Lucas')
+//   .then(resolve => console.log(`True, ${resolve.name}`))
+//   .catch(reject => console.log(`False, ${reject.name}`))
+// ;
+
+
+
+function bestRockBand(band) {
+
+  return new Promise((resolve, reject) => {
+    if (band === 'Metallica') {
+      resolve({
+        success: true,
+        bandName: band,
+        msg: 'Boa! ' + band + ' é muito bom!'
+      });
+    } else {
+      reject({
+        success: false,
+        msg: 'Sei lá...'
+      });
+    };
+  })
+
+};
+
+function bestSong(response) {
+  return new Promise((resolve, reject) => {
+    if (response.success) {
+      resolve('Fight fire with fire by ' + response.bandName);
+    } else {
+      reject('Certeza? ' + response.msg);
+    };
+  })
+};
+
+// Com then/catch
+bestRockBand('Metallica')
+  .then(response => {
+    console.log(response.msg);
+
+    // Esse return repassa, juntamente com a chamada da "segunda função", os dados do response do primeiro .then
+    return bestSong(response)
+  })
+  .then(response => {
+    console.log(response)
+  })
+  .catch(reject => {
+    console.log(reject.msg)
+  })
+;
+
+// // Com Async/Await
+// async function doIt() {
+//   try {
+//     const response1 = await bestRockBand('Metallica');
+//     console.log(response1.msg)
+//     const response2 = await bestSong(response1)
+//     console.log(response2);
+//   } catch(e) {
+//     console.log(e.msg);
+//   } 
+// }
+
+// doIt()
+
+
+
+// // Com AWAIT (sem estar em um contexto de função, portanto, sem async também)
+// try {
+//   const response1 = await bestRockBand('Metallica');
+//   console.log(response1.msg)
+//   const response2 = await bestSong(response1);
+//   console.log(response2)
+// } catch(e) {
+//   console.log(e.msg)
+// }

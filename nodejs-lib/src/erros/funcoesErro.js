@@ -27,6 +27,12 @@ export default function trataErros(erro) {
     };
 };
 
+// A diferença entre usar "throw" e "console.log" para devolver erros, é que o console.log APENAS AVISA que algo deu errado, enquanto o throw INTERROMPE a execução para que o erro seja devidamente tratado.
+// QUAL/QUANDO USAR?
+// 1. console.log: Para erros menores, onde o app pode continuar funcionando mesmo sem aquela parte. Ex: falha ao carregar uma imagem de avatar (usa uma padrão).
+// 2. throw: Para erros graves, onde continuar a execução geraria dados corrompidos. Ex: falha ao processar um pagamento.
+// No dia a dia, se você estiver desenvolvendo uma função que outras partes do sistema vão usar, prefira usar o throw. Assim, você garante que os outros desenvolvedores (ou você mesmo no futuro) saibam exatamente se a função falhou, em vez de o erro passar batido e quebrar outra coisa lá na frente.
+
 
 // JEITO ANTIGO DE FAZER EXPORTAÇÕES (TEMPOS MUDARAM, AGORA O NEGÓCIO É O EXPORT!!!!):
 // module.exports = trataErros;

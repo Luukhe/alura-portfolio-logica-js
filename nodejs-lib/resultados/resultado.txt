@@ -1,0 +1,3 @@
+Palavras duplicadas no parágrafo 3: uma (2 vezes) 
+Palavras duplicadas no parágrafo 7: dispositivos (2 vezes), web (2 vezes), seu (3 vezes), conectado (2 vezes) 
+Palavras duplicadas no parágrafo 8: cliente (2 vezes), uma (2 vezes), para (2 vezes) 

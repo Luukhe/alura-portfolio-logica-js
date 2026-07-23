@@ -84,7 +84,6 @@ function limpaPalavras(texto) {
 
 
 
-
 //-----------------------------------------------------------------------------
 
 
@@ -123,10 +122,6 @@ function limpaPalavras(texto) {
 //     // const listaFiltrada = arr.filter(obj => Object.keys(obj).length > 0);
 //     return listaFiltrada;
 // };
-
-
-
-
 
 
 

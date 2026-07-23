@@ -1,4 +1,4 @@
-# Repositório destinado a projetos de portfólio de Lógica com JavaScript e exercícios feitos no Alura #
+# Repositório destinado a projetos de portfólio de Lógica com JavaScript, exercícios e projetos em geral com JavaScript feitos no Alura #
 
 ## Links para os portfólios ##
 
