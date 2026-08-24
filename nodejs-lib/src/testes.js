@@ -675,50 +675,50 @@
 
 
 
-function bestRockBand(band) {
+// function bestRockBand(band) {
 
-  return new Promise((resolve, reject) => {
-    if (band === 'Metallica') {
-      resolve({
-        success: true,
-        bandName: band,
-        msg: 'Boa! ' + band + ' é muito bom!'
-      });
-    } else {
-      reject({
-        success: false,
-        msg: 'Sei lá...'
-      });
-    };
-  })
+//   return new Promise((resolve, reject) => {
+//     if (band === 'Metallica') {
+//       resolve({
+//         success: true,
+//         bandName: band,
+//         msg: 'Boa! ' + band + ' é muito bom!'
+//       });
+//     } else {
+//       reject({
+//         success: false,
+//         msg: 'Sei lá...'
+//       });
+//     };
+//   })
 
-};
+// };
 
-function bestSong(response) {
-  return new Promise((resolve, reject) => {
-    if (response.success) {
-      resolve('Fight fire with fire by ' + response.bandName);
-    } else {
-      reject('Certeza? ' + response.msg);
-    };
-  })
-};
+// function bestSong(response) {
+//   return new Promise((resolve, reject) => {
+//     if (response.success) {
+//       resolve('Fight fire with fire by ' + response.bandName);
+//     } else {
+//       reject('Certeza? ' + response.msg);
+//     };
+//   })
+// };
 
-// Com then/catch
-bestRockBand('Metallica')
-  .then(response => {
-    console.log(response.msg);
+// // Com then/catch
+// bestRockBand('Metallica')
+//   .then(response => {
+//     console.log(response.msg);
 
-    // Esse return repassa, juntamente com a chamada da "segunda função", os dados do response do primeiro .then
-    return bestSong(response)
-  })
-  .then(response => {
-    console.log(response)
-  })
-  .catch(reject => {
-    console.log(reject.msg)
-  })
-;
+//     // Esse return repassa, juntamente com a chamada da "segunda função", os dados do response do primeiro .then
+//     return bestSong(response)
+//   })
+//   .then(response => {
+//     console.log(response)
+//   })
+//   .catch(reject => {
+//     console.log(reject.msg)
+//   })
+// ;
 
 // // Com Async/Await
 // async function doIt() {

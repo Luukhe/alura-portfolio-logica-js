@@ -107,7 +107,7 @@ async function criaESalvaArquivo(resultado, endereco) {
     // Como está sendo criado um documento de TEXTO (.txt), o conteúdo (que é um ARRAY de objetos JavaScript) precisa ser CONVERTIDO em string/texto comum para que seja lido/entendido pelo arquivo txt. **ACHISMO: Logo, muito provavelmente, posteriormente trabalhando com outros tipos de arquivos e extensões que sejam criados com o "writeFile", precisaria-se de bibliotecas externas para fazer a conversão do conteúdo
     // const resultadoParaStr = JSON.stringify(resultado);
 
-    // Posteriormente na aula, substituído pelo JSON.stringify, pois esse, que é o retorno definitivo do programa, já é retornado uma STRING
+    // Posteriormente na aula, essa função substituiu o método JSON.stringify usado anteriormente, pois essa função, que é o retorno definitivo do programa, já é retornado uma STRING
     const resultadoParaStr = montaSaidaArquivo(resultado);
 
     try {
